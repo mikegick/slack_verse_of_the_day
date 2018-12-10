@@ -38,4 +38,4 @@ while(True):
             )
         time.sleep(86300)
     else:
-        time.sleep(99)
+        time.sleep(49)
