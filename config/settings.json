@@ -1,4 +1,5 @@
 {
     "slackToken": "",
-	"channelList": [""]
+	"channelList": [""],
+	"postTime": ""
 }

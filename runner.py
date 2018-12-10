@@ -18,13 +18,14 @@ with open(os.path.join(os.path.dirname(os.path.realpath('__file__')) + "\config\
     slackToken = jsonSettings["slackToken"] #                                                                       |
 #--------------------------------------------------------------------------------------------------------------------------|
     channelsToPostTo = jsonSettings["channelList"]
+	timeToPost = jsonSettings["postTime"]
 sc = SlackClient(slackToken)
 
 
 while(True):
     dayAndTime = datetime.datetime.now()
     
-    if(dayAndTime.hour == 12):
+    if(dayAndTime.hour == timeToPost):
         r = requests.get(url = verseURL) 
         data = r.json()
         verse = "\"" + data["verse"]["details"]["text"] + "\" -" + data["verse"]["details"]["reference"]
