@@ -23,7 +23,7 @@ sc = SlackClient(slackToken)
 
 while(True):
     dayAndTime = datetime.datetime.now()
-    print (dayAndTime.hour)
+    
     if(dayAndTime.hour == 12):
         r = requests.get(url = verseURL) 
         data = r.json()
