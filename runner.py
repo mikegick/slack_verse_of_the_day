@@ -18,7 +18,7 @@ with open(os.path.join(os.path.dirname(os.path.realpath('__file__')) + "\config\
     slackToken = jsonSettings["slackToken"] #                                                                       |
 #--------------------------------------------------------------------------------------------------------------------------|
     channelsToPostTo = jsonSettings["channelList"]
-	timeToPost = jsonSettings["postTime"]
+    timeToPost = jsonSettings["postTime"]
 sc = SlackClient(slackToken)
 
 
