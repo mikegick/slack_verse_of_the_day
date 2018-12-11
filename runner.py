@@ -2,7 +2,6 @@ import requests
 import time
 import sys
 import operator
-import random
 import string
 import os
 import json
@@ -24,8 +23,7 @@ sc = SlackClient(slackToken)
 
 while(True):
     dayAndTime = datetime.datetime.now()
-    
-    if(dayAndTime.hour == timeToPost):
+    if(dayAndTime.hour == int(timeToPost)):
         r = requests.get(url = verseURL) 
         data = r.json()
         verse = "\"" + data["verse"]["details"]["text"] + "\" -" + data["verse"]["details"]["reference"]
