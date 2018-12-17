@@ -26,13 +26,21 @@ while(True):
     if(dayAndTime.hour == int(timeToPost)):
         r = requests.get(url = verseURL) 
         data = r.json()
-        verse = "\"" + data["verse"]["details"]["text"] + "\" -" + data["verse"]["details"]["reference"]
+        verse = data["verse"]["details"]["text"]
+        reference = data["verse"]["details"]["reference"]
+        splitReference = reference.split(' ')
+        book = reference.split(' ')[0]
+        chapter = splitReference[1].split(':')[0]
+        if(len(splitReference) == 3):
+            chapter = splitReference[2].split(':')[0]
+            book = book + "+" + splitReference[1]
+        context = "_<https://www.biblegateway.com/passage/?search=" + book + "+" + chapter + "&version=NIV|context>_"
         
         for channel in channelsToPostTo:
             sc.api_call(
               "chat.postMessage",
               channel=channel,
-              text=verse,
+              text=">" + verse + "\n -" + reference + "\n" + context,
               username="Verse of the Day"
             )
         time.sleep(86300)
