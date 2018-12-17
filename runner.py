@@ -18,6 +18,7 @@ with open(os.path.join(os.path.dirname(os.path.realpath('__file__')) + "\config\
 #--------------------------------------------------------------------------------------------------------------------------|
     channelsToPostTo = jsonSettings["channelList"]
     timeToPost = jsonSettings["postTime"]
+    versions = jsonSettings["versionsForContextLinks"]
 sc = SlackClient(slackToken)
 
 
@@ -34,9 +35,12 @@ while(True):
         if(len(splitReference) == 3):
             chapter = splitReference[2].split(':')[0]
             book = book + "+" + splitReference[1]
-        context = "_<https://www.biblegateway.com/passage/?search=" + book + "+" + chapter + "&version=NIV|context>_"
+        context = "*context:* "
+        for version in versions :
+            contextVersionTemplate = "<https://www.biblegateway.com/passage/?search=" + book + "+" + chapter + "&version=" + version + "|" + version + ">"
+            context = context + contextVersionTemplate + " "
         
-        for channel in channelsToPostTo:
+        for channel in channelsToPostTo :
             sc.api_call(
               "chat.postMessage",
               channel=channel,
