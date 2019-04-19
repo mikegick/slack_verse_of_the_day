@@ -7,7 +7,7 @@ An application written in python designed to make use of the ourmanna API in ord
 3. If you do not have pip, Run "get-pip.py" from inside the repository root folder in your command line interface
 4. Execute `pip install slackclient` in your command line interface
 5. Configure your Slack Legacy Token information and Channels to Post to in settings.json in the config folder
-5. Run runner.py from inside the repository root folder in your command line interface
+5. Run runner.py from inside the repository root folder in your command line interface `python3 runner.py &`
 
 ## Coming soon:
 - Support for 0Auth2 authentication and authorization
